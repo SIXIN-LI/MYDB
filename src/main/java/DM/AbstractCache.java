@@ -136,11 +136,11 @@ public abstract class AbstractCache<T> {
      * @return
      * @throws Exception
      */
-    public abstract T getForCache(long key) throws Exception;
+    protected abstract T getForCache(long key) throws Exception;
 
     /**
-     * When the reference/usage of this resource is 0, release it from cache
-     * @param T
+     * Write back to the database/source
+     * @param object
      */
-    public abstract void releaseForCache(Object T);
+    protected abstract void releaseForCache(T object);
 }
