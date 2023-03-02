@@ -44,8 +44,11 @@ public class TransanctionManagerImpl implements TransactionManagerAPI{
     }
 
     /**
-     * Validating the xid file by comparing its theoretical length based on xid file header
-     * with the file's actual length
+     * Validating the xid file by comparing
+     *      its theoretical length based on xid file header vs
+     *      the file's actual length
+     *
+     * Note: System exits when xid file cannot be accessed.
      */
     private void checkXIDCounter() {
         long fileLen = 0;
@@ -73,7 +76,7 @@ public class TransanctionManagerImpl implements TransactionManagerAPI{
     }
 
     /**
-     * Get transaction id based on their xid
+     * Get transaction position (number of bytes) based on their xid
      */
     private long getXidPosition(long xid) {
         return LEN_XID_HEADER_LENGTH + (xid-1) * XID_FIELD_SIZE;
